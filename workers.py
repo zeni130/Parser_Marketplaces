@@ -12,7 +12,6 @@ logging.basicConfig(
 log = logging.getLogger("Parser Marketplaces")
 
 
-
 def remove_csv(name_file: pathlib.Path) -> None:
     """Deleting a file
 
@@ -22,6 +21,7 @@ def remove_csv(name_file: pathlib.Path) -> None:
     if pathlib.Path.is_file(name_file):
         pathlib.Path.unlink(name_file)
         log.info(f"Remove file: {name_file}")
+
 
 def create_or_update_csv(
     info_items_subcategory: list, name_file: pathlib.Path, column_names: list
@@ -49,24 +49,25 @@ def create_or_update_csv(
 
 def run():
     parser_zara = zara.ParserZara()
-    subcat_list = parser_zara.get_subcategory()
+    subcat_list_zara = parser_zara.get_subcategory()
 
     remove_csv(name_file=static.PATH_SUBCATEGORY_ZARA_FILE)
     create_or_update_csv(
-        subcat_list,
+        info_items_subcategory=subcat_list_zara,
         name_file=static.PATH_SUBCATEGORY_ZARA_FILE,
         column_names=static.COLUMN_NAME_SUBCATEGORY_FILE
     )
 
     parser_hm = hm.ParserHm()
-    subcat_list = parser_hm.get_subcategory()
+    subcat_list_hm = parser_hm.get_subcategory()
 
     remove_csv(name_file=static.PATH_SUBCATEGORY_HM_FILE)
     create_or_update_csv(
-        subcat_list,
+        info_items_subcategory=subcat_list_hm,
         name_file=static.PATH_SUBCATEGORY_HM_FILE,
         column_names=static.COLUMN_NAME_SUBCATEGORY_FILE
     )
+
 
 if __name__ == '__main__':
     run()

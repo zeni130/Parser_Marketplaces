@@ -45,8 +45,9 @@ class ParserHm:
                     page.goto(link_cat)
                     soup_cat = bs(page.content(), features="html.parser")
 
-                    page_sidebar_cat = soup_cat.find("aside",
-                                                     class_="page-sidebar")
+                    page_sidebar_cat = soup_cat.find(
+                        "aside", class_="page-sidebar"
+                    )
                     script_cat = page_sidebar_cat.find("script")
                     props_cat = (
                         str(script_cat.contents[0])
@@ -72,7 +73,7 @@ class ParserHm:
                             res.append(subcat_data)
                             continue
 
-                        for children in  subcat["children"]:
+                        for children in subcat["children"]:
                             subcat_data = {
                                 "name": children["text"],
                                 "url": children["url"]
