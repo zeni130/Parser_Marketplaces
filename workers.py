@@ -1,9 +1,10 @@
-import pathlib
 import csv
 import logging
+import pathlib
 
-from marketplaces import zara, hm, fashionnova
 import static
+from marketplaces import fashionnova, hm, zara
+
 
 logging.basicConfig(
     level=logging.INFO,

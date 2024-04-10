@@ -1,0 +1,7 @@
+black==24.3.0  # code formatter
+isort==5.13.2
+mypy==1.9.0  # type checker
+
+
+# linter
+flake8==6.0.0
