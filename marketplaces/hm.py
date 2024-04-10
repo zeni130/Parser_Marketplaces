@@ -12,7 +12,7 @@ class ParserHm:
     def get_subcategory():
         urls = [
             "https://www2.hm.com/en_us/women/products/view-all.html",
-            "https://www2.hm.com/en_us/men/products/view-all.html"
+            "https://www2.hm.com/en_us/men/products/view-all.html",
         ]
 
         res = []
@@ -68,7 +68,7 @@ class ParserHm:
                         if not subcat["children"]:
                             subcat_data = {
                                 "name": subcat["text"],
-                                "url": subcat["url"]
+                                "url": subcat["url"],
                             }
                             res.append(subcat_data)
                             continue
@@ -76,7 +76,7 @@ class ParserHm:
                         for children in subcat["children"]:
                             subcat_data = {
                                 "name": children["text"],
-                                "url": children["url"]
+                                "url": children["url"],
                             }
                             res.append(subcat_data)
 

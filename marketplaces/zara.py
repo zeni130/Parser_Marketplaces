@@ -13,12 +13,12 @@ class ParserZara:
         "gift receipt",
         "press",
         "about",
-        "collection"
+        "collection",
     ]
 
     def __init__(self):
         pass
-    
+
     def get_subcategory(self) -> list:
         res = []
 
@@ -39,10 +39,7 @@ class ParserZara:
                     if link is not None:
                         if text_subcat.lower() in self.SKIP_SUBCATEGORIES:
                             continue
-                        subcat = {
-                            "name": text_subcat,
-                            "url": link
-                        }
+                        subcat = {"name": text_subcat, "url": link}
                         res.append(subcat)
 
         return res

@@ -2,7 +2,7 @@ import pathlib
 import csv
 import logging
 
-from marketplaces import zara, hm
+from marketplaces import zara, hm, fashionnova
 import static
 
 logging.basicConfig(
@@ -48,6 +48,7 @@ def create_or_update_csv(
 
 
 def run():
+    # Parser Zara
     parser_zara = zara.ParserZara()
     subcat_list_zara = parser_zara.get_subcategory()
 
@@ -55,9 +56,10 @@ def run():
     create_or_update_csv(
         info_items_subcategory=subcat_list_zara,
         name_file=static.PATH_SUBCATEGORY_ZARA_FILE,
-        column_names=static.COLUMN_NAME_SUBCATEGORY_FILE
+        column_names=static.COLUMN_NAME_SUBCATEGORY_FILE,
     )
 
+    # Parser HM
     parser_hm = hm.ParserHm()
     subcat_list_hm = parser_hm.get_subcategory()
 
@@ -65,9 +67,13 @@ def run():
     create_or_update_csv(
         info_items_subcategory=subcat_list_hm,
         name_file=static.PATH_SUBCATEGORY_HM_FILE,
-        column_names=static.COLUMN_NAME_SUBCATEGORY_FILE
+        column_names=static.COLUMN_NAME_SUBCATEGORY_FILE,
     )
 
+    # Parser FashionNova
+    parser_fashionnova = fashionnova.ParserFashionNova()
+    subcat_list_fashionnova = parser_fashionnova.get_subcategory()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run()
